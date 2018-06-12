@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MiniProject.Models;
-
+using MiniProject.Repository.Pattern.Interfaces;
+using MiniProject.Repository.Pattern;
 namespace MiniProject
 {
     public class Startup
@@ -21,8 +21,7 @@ namespace MiniProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
-            services.AddMvc();
+            
 
             var connection = Configuration["connectionstring"];
             services.AddDbContext<ProductContext>(options => options.UseSqlServer(connection));
@@ -36,7 +35,7 @@ namespace MiniProject
             //});
 
             // Add application services.
-            //services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IPro, RoomRepository>();
             //services.AddScoped<IBookingRepository, BookingRepository>();
         }
 

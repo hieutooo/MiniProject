@@ -8,12 +8,22 @@ namespace MiniProject.Repository.Pattern
 {
     public class ProductRepository : IProductRepository
     {
+        public void DeleteProduct()
+        {
+            throw new NotImplementedException();
+        }
+
         public void GetAllProduct()
         {
             throw new NotImplementedException();
         }
 
-        public void Insert()
+        public void InsertProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateProduct()
         {
             throw new NotImplementedException();
         }

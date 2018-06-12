@@ -7,7 +7,10 @@ namespace MiniProject.Repository.Pattern.Interfaces
 {
     public interface IProductRepository
     {
-        void Insert();
+        void InsertProduct();
         void GetAllProduct();
+        void UpdateProduct();
+        void DeleteProduct();
+
     }
 }
