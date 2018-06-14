@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MiniProject.Repository.Pattern.Interfaces;
 using MiniProject.Repository.Pattern;
+using MiniProject.Models;
+
 namespace MiniProject
 {
     public class Startup
@@ -25,7 +27,7 @@ namespace MiniProject
 
             var connection = Configuration["connectionstring"];
             services.AddDbContext<ProductContext>(options => options.UseSqlServer(connection));
-
+            
             // Adds a default in-memory implementation of IDistributedCache.
             services.AddDistributedMemoryCache();
 
@@ -35,7 +37,8 @@ namespace MiniProject
             //});
 
             // Add application services.
-            services.AddScoped<IPro, RoomRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            
             //services.AddScoped<IBookingRepository, BookingRepository>();
         }
 
@@ -61,7 +64,7 @@ namespace MiniProject
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Product}/{action=Index}/{id?}");
 
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
